@@ -1,4 +1,7 @@
-# Django settings for mysite1 project.
+# Django settings for mysite project.
+from os.path import join, abspath, dirname
+PROJECT_ROOT = dirname(abspath(__file__))
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,7 +15,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/michaelmatranga/Documents/Django/Practice/mysite1/sqlite3db',                      # Or path to database file if using sqlite3.
+        'NAME': join(PROJECT_ROOT,'../sqlite3db'),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -58,7 +61,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'rn02#^17u8+@zblr)fd@2_o*58_c5iny&7*p+94_#hip_-k1d('
+SECRET_KEY = 'qe7eplc1whcsejuh@=!il!4447+ln(h8@xiv$a22!y@x(udfeo'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -75,12 +78,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'mysite1.urls'
+ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+	join(PROJECT_ROOT, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -89,9 +93,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-	'polls',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'polls',
+    'django.contrib.admin',
+
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

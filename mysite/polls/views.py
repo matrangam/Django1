@@ -10,7 +10,7 @@ def vote(request, poll_id):
 	selected_choice = p.choice_set.get(pk=request.POST['choice'])
   except (KeyError, Choice.DoesNotExist):
 	return render_to_response('poll_detail.html', {
-		'object': p,
+		'poll': p,
 		'error_message': "You didn't select a choice.",
 		}, context_instance=RequestContext(request))
   else:
